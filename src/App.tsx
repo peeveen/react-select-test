@@ -35,69 +35,41 @@ function App() {
 	const items = []
 	for (let index = 0; index < 20; ++index) {
 		items.push(
-			<div
-				key={index}
-				style={{
-					backgroundColor: "white",
-					padding: 10,
-					flex: 1,
-					display: "flex",
-					flexWrap: "nowrap",
-					flexDirection: "row",
-				}}
-			>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						flex: 0.1,
-					}}
-				>
-					CHOOSE:
-				</div>
-				<div
-					style={{
-						display: "flex",
-						flex: 0.9,
-					}}
-				>
-					<Select
-						menuPosition="fixed"
-						options={options}
-						theme={(theme) => ({ ...theme })}
-						styles={{
-							container: (styles) => ({
+			<div style={{ padding: 10, maxWidth: "100%" }}>
+				{"CHOOSE:"}
+				<Select
+					menuPosition="fixed"
+					options={options}
+					// This is the workaround for the theme-related jittery menu UI
+					//theme={(theme) => theme }
+					theme={(theme) => ({ ...theme })}
+					styles={{
+						container: (styles) => ({
+							...styles,
+							// Make the container full-width
+							display: "flex",
+							flex: 1,
+						}),
+						control: (styles) => ({
+							...styles,
+							// Make the container full-width
+							display: "flex",
+							flex: 1,
+						}),
+						input: (styles) => {
+							// This is the expanding-control workaround
+							//delete (styles["&:after"] as any)["content"]
+							return {
 								...styles,
 								display: "flex",
-								flex: 1,
-							}),
-							control: (styles) => ({
-								...styles,
-								display: "flex",
-								flex: 1,
-							}),
-							input: (styles) => {
-								const after = styles["&:after"] as any
-								delete after["content"]
-								styles["&:after"] = after
-								return {
-									...styles,
-									display: "flex",
-								}
-							},
-						}}
-					/>
-				</div>
+							}
+						},
+					}}
+				/>
 			</div>
 		)
 	}
-	return (
-		<div>
-			Hello
-			{items}
-		</div>
-	)
+	return <div style={{ maxWidth: "100vw", padding: 10 }}>{items}</div>
 }
 
 export default App
