@@ -33,10 +33,21 @@ function App() {
 	]
 
 	const items = []
-	for (let index = 0; index < 20; ++index) {
+	for (let index = 0; index < 40; ++index) {
 		items.push(
-			<div style={{ padding: 10, maxWidth: "100%" }}>
-				{"CHOOSE:"}
+			// Flex div so I can make each row full width of the screen
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "row",
+					alignItems: "center",
+					flexWrap: "nowrap",
+					flex: 1,
+					padding: 10,
+					maxWidth: "100%", // This has no effect, control still grows.
+				}}
+			>
+				<div>{"Choose:"}&nbsp;</div>
 				<Select
 					menuPosition="fixed"
 					options={options}
@@ -44,17 +55,10 @@ function App() {
 					//theme={(theme) => theme }
 					theme={(theme) => ({ ...theme })}
 					styles={{
+						// Make the container full remaining width
 						container: (styles) => ({
 							...styles,
-							// Make the container full-width
-							display: "flex",
-							flex: 1,
-						}),
-						control: (styles) => ({
-							...styles,
-							// Make the container full-width
-							display: "flex",
-							flex: 1,
+							width: "100%",
 						}),
 						input: (styles) => {
 							// This is the expanding-control workaround
