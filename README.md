@@ -1,5 +1,7 @@
 # Demo App
 
+## UI disruption when different theme object is returned
+
 1. Run and launch app (localhost:3000)
 2. Scroll to bottom of screen
 3. Open menu on react-select controls at the foot of the screen
@@ -22,3 +24,13 @@ theme={(theme) => theme }
 ... (or remove the line entirely) ...
 
 ... _then the problem goes away!_ 😮
+
+## Expanding controls
+
+Keep typing text into the search input, and the control grows and grows.
+
+Uncomment this line in [App.tsx](./src/App.tsx) to prevent it:
+
+```typescript
+//delete (styles["&:after"] as any)["content"]
+```
