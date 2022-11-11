@@ -1,5 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-import { Button, Modal } from "react-bootstrap"
 import Select from "react-select"
 import "./App.css"
 
@@ -53,7 +51,7 @@ function App() {
 						display: "flex",
 						justifyContent: "center",
 						alignItems: "center",
-						flex: 0.2,
+						flex: 0.1,
 					}}
 				>
 					CHOOSE:
@@ -61,7 +59,7 @@ function App() {
 				<div
 					style={{
 						display: "flex",
-						flex: 0.8,
+						flex: 0.9,
 					}}
 				>
 					<Select
@@ -97,13 +95,7 @@ function App() {
 	return (
 		<div>
 			Hello
-			<Modal show scrollable>
-				<Modal.Header>BLAH</Modal.Header>
-				<Modal.Body>{items}</Modal.Body>
-				<Modal.Header>
-					<Button>OK</Button>
-				</Modal.Header>
-			</Modal>
+			{items}
 		</div>
 	)
 }
