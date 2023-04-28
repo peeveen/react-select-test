@@ -1,5 +1,7 @@
 # Demo App
 
+Demo app for [this issue](https://github.com/JedWatson/react-select/issues/5472).
+
 ## UI disruption when different theme object is returned
 
 1. Run and launch app (localhost:3000)
